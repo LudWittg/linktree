@@ -1,0 +1,18 @@
+---
+const res = await fetch(
+    `https://gdg.community.dev/api/event_slim/for_chapter/854/?page_size=1&status=Completed&include_cohosted_events=true&visible_on_parent_chapter_only=true&order=-start_date&fields=title,start_date,event_type_title,cropped_picture_url,cropped_banner_url,url,cohost_registration_url,description,description_short&page=1`,
+);
+const data = await res.json();
+const latestEvent = data.results[0];
+---
+
+{latestEvent && (
+    <div class="links">
+        <h2 class="subtitle">Next: {latestEvent.title}</h2>
+        <a class="card" href={latestEvent.url} target="_blank">
+            <div class="picture">
+                <img src={latestEvent.cropped_picture_url} alt="GDG Community Event" />
+            </div>
+        </a>
+    </div>
+)}
