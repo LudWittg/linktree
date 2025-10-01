@@ -34,9 +34,9 @@ const FEEDBACK_FORM_URL_PREFIX =
                         formats={['avif', 'webp', 'jpeg']}      /* modern + fallback */
                         widths={[320, 640, 960, 1280]}         /* responsive sizes */
                         sizes="(max-width: 640px) 100vw, 640px"
-                        loading="lazy"
+                        loading="eager"
                         decoding="async"
-                        fetchpriority="low"
+                        fetchpriority="high"
                         inferSize={true}
                     />
                 </div>
