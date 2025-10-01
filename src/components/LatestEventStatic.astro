@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components'
+import { Picture } from 'astro:assets'
 
 // Fetch latest upcoming event
 const upcomingRes = await fetch(
@@ -27,7 +28,17 @@ const FEEDBACK_FORM_URL_PREFIX =
             <h2 class="subtitle">Next: {latestEvent.title}</h2>
             <a class="card" href={latestEvent.url} target="_blank">
                 <div class="picture">
-                    <img src={latestEvent.cropped_picture_url} alt="GDG Community Event" />
+                    <Picture
+                        src={latestEvent.cropped_picture_url}
+                        alt="GDG Community Event"
+                        formats={['avif', 'webp', 'jpeg']}      /* modern + fallback */
+                        widths={[320, 640, 960, 1280]}         /* responsive sizes */
+                        sizes="(max-width: 640px) 100vw, 640px" /* tune to your layout */
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
+                        inferSize={true}
+                    />
                 </div>
             </a>
             <a
