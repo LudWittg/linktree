@@ -18,6 +18,9 @@ export default defineConfig({
         icon(),
     ],
     image: {
-        remotePatterns: [{ protocol: 'https', hostname: 'gdg.community.dev' }],
+        remotePatterns: [
+            { protocol: 'https', hostname: 'gdg.community.dev' },
+            { protocol: 'https', hostname: 'res.cloudinary.com' },
+        ],
     },
 })
